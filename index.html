@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BloomBack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bloom: {
+                            50: '#FDF2F8', // Soft Pink Background
+                            100: '#FCE7F3', 
+                            200: '#FBCFE8',
+                            300: '#9D6FB3',
+                            400: '#7A3B84',
+                            500: '#4e1952', // Deep Purple Primary
+                            600: '#3D1340',
+                            700: '#2C0D2E',
+                        },
+                        accent: {
+                            green: '#22C55E', // Bright Green
+                            'green-hover': '#16A34A',
+                        },
+                        slate: '#4A4A4A',
+                        mist: '#E5E7EB',
+                        cream: '#FDF2F8', // Soft Pink Background
+                        background: '#FDF2F8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Fraunces', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDF2F8;
+            color: #4A4A4A;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .serif-title {
+            font-family: 'Fraunces', serif;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom styles for range inputs to use the deep purple */
+        input[type=range].accent-bloom-500::-webkit-slider-thumb {
+            background: #4e1952;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
