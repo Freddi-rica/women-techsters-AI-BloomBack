@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema(
         passwordHash: { type: String, required: true },
         isVerified: { type: Boolean, default: false },
 
+        avatar: { type: String, default: null },
+
         journeyStage: {
             type: String,
             enum: ["preparing", "on_leave", "returning"],

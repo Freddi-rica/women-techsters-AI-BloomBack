@@ -14,6 +14,7 @@ app.get("/", (req, res) => res.json({ success: true, message: "BloomBack API run
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/community", require("./modules/community/community.routes"));
 
 app.use(errorHandler);
 
