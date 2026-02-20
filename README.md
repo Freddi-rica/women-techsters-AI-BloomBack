@@ -8,7 +8,7 @@ BloomBack is an AI-enabled web application designed to provide intelligent, acce
 
 ## 🚀 Live Demo
 
-🔗 **Production URL:** *<paste your Vercel link here>*
+🔗 **Production URL:** *https://women-techsters-ai-prototype-2.vercel.app/*
 
 ---
 
