@@ -183,18 +183,6 @@ Vercel automatically redeploys on push to `main`.
 
 ---
 
-## 📸 Screenshots (Recommended)
-
-*Add screenshots here for stronger portfolio impact.*
-
-Suggested:
-
-* Home screen
-* AI response example
-* Mobile view
-
----
-
 ## 🌍 Real-World Impact
 
 BloomBack demonstrates how AI can be responsibly applied to support working parents navigating maternity transitions. The project aligns with practical AI adoption principles and modern DevOps deployment standards.
