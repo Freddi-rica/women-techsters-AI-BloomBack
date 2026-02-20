@@ -1,7 +1,3 @@
-Below is a **polished, portfolio-ready README** you can paste directly into your repository’s `README.md`.
-
----
-
 # 🌸 BloomBack Prototype
 
 **AI-powered maternity support assistant**
