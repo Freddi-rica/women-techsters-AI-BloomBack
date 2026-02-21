@@ -100,7 +100,7 @@ Create:
 Add your key:
 
 ```env
-GEMINI_API_KEY=AIzaSyBWtDur7Qt3qY0h-VHkCi5TjVJjFvn9yfw
+GEMINI_API_KEY=......................................
 ```
 
 > ⚠️ Never commit `.env.local` to GitHub.
