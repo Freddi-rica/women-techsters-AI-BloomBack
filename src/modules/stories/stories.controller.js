@@ -1,4 +1,5 @@
 const SuccessStory = require('./SuccessStory.model');
+const User = require('../users/user_model');
 
 // GET /stories
 exports.listStories = async (req, res, next) => {
@@ -33,16 +34,21 @@ exports.getStory = async (req, res, next) => {
 exports.createStory = async (req, res, next) => {
     try {
         const { role, company, leaveDuration, challenge, achievement, fullStory, tags } = req.body;
+        const userId = req.user.id || req.user._id;
+        const userDoc = await User.findById(userId);
+
+        const safeTags = tags || [];
+
         const story = new SuccessStory({
-            authorId: req.user._id,
-            authorName: req.user.name || req.user.firstName || req.user.username || 'Anonymous',
+            authorId: userId,
+            authorName: userDoc ? (userDoc.fullName ? userDoc.fullName.split(' ')[0] : 'Anonymous') : 'Anonymous',
             role,
             company,
             leaveDuration,
             challenge,
             achievement,
             fullStory,
-            tags,
+            tags: safeTags,
             isApproved: false
         });
         await story.save();
@@ -58,8 +64,11 @@ exports.toggleLike = async (req, res, next) => {
         const story = await SuccessStory.findById(req.params.id);
         if (!story) return res.status(404).json({ success: false, message: 'Story not found' });
 
-        const userId = req.user._id;
-        const index = story.likedBy.indexOf(userId);
+        const userId = req.user.id || req.user._id;
+        const mongoose = require('mongoose');
+        const userObjId = mongoose.Types.ObjectId(userId);
+
+        const index = story.likedBy.findIndex((id) => id.toString() === userId.toString());
 
         if (index === -1) {
             story.likedBy.push(userId);
