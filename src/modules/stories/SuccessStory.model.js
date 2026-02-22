@@ -12,7 +12,7 @@ const successStorySchema = new mongoose.Schema({
     tags: [String],                   // e.g. ['Promotion', 'Confidence', 'Tech']
     likes: { type: Number, default: 0 },
     likedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    isApproved: { type: Boolean, default: false },
+    isApproved: { type: Boolean, default: true },
     createdAt: { type: Date, default: Date.now }
 }, { timestamps: true });
 

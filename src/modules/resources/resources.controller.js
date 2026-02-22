@@ -34,7 +34,8 @@ exports.getSavedResources = async (req, res, next) => {
         const { page = 1, limit = 10 } = req.query;
         const skip = (page - 1) * limit;
 
-        const saved = await UserResource.find({ userId: req.user._id, savedAt: { $ne: null } })
+        const userId = req.user.id || req.user._id;
+        const saved = await UserResource.find({ userId, savedAt: { $ne: null } })
             .populate('resourceId')
             .skip(skip)
             .limit(parseInt(limit));
@@ -61,7 +62,7 @@ exports.getResource = async (req, res, next) => {
 exports.completeResource = async (req, res, next) => {
     try {
         const resourceId = req.params.id;
-        const userId = req.user._id;
+        const userId = req.user.id || req.user._id;
 
         const resource = await Resource.findById(resourceId);
         if (!resource) return res.status(404).json({ success: false, message: 'Resource not found' });
@@ -88,7 +89,7 @@ exports.completeResource = async (req, res, next) => {
 exports.saveResource = async (req, res, next) => {
     try {
         const resourceId = req.params.id;
-        const userId = req.user._id;
+        const userId = req.user.id || req.user._id;
 
         let userRes = await UserResource.findOne({ userId, resourceId });
         if (!userRes) {

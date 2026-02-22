@@ -15,16 +15,25 @@ const seed = async () => {
         await SuccessStory.deleteMany({});
 
         const resources = [
-            { title: "Building Confidence Before Returning", type: "article", readTime: "5 min read", source: "Bloom Library", tags: ["Confidence", "Returning"], description: "A guide to building confidence.", url: "https://example.com/a1" },
-            { title: "Navigating Workplace Dynamics", type: "video", readTime: "12 min watch", source: "HBR", tags: ["Workplace", "Mindset"], description: "Tips and tricks for handling dynamics.", url: "https://example.com/v1" },
-            { title: "The First Week Back", type: "guide", readTime: "10 min read", source: "Bloom Library", tags: ["Returning", "First Week"], description: "Essential survival guide.", url: "https://example.com/g1" },
-            { title: "Parenting and Career Growth", type: "podcast", readTime: "30 min listen", source: "Career Nav", tags: ["Career", "Parenting"], description: "Podcast episode on balancing.", url: "https://example.com/p1" },
-            { title: "Imposter Syndrome as a Working Mom", type: "article", readTime: "7 min read", source: "Bloom Library", tags: ["Mindset", "Confidence"], description: "Overcoming the feeling of not belonging.", url: "https://example.com/a2" },
-            { title: "Flexible Working Negotiations", type: "video", readTime: "15 min watch", source: "TED", tags: ["Flexibility", "Career"], description: "How to negotiate flexible hours.", url: "https://example.com/v2" },
-            { title: "Reconnecting with Your Professional Self", type: "guide", readTime: "8 min read", source: "Bloom Library", tags: ["Mindset", "Returning"], description: "Exercises to reconnect.", url: "https://example.com/g2" },
-            { title: "Leadership After Leave", type: "podcast", readTime: "45 min listen", source: "Lead", tags: ["Leadership", "Career"], description: "Inspiring stories.", url: "https://example.com/p2" },
-            { title: "Time Management Hacks", type: "article", readTime: "6 min read", source: "Forbes", tags: ["Productivity", "Mindset"], description: "Actionable tips.", url: "https://example.com/a3" },
-            { title: "Setting Boundaries at Work", type: "video", readTime: "10 min watch", source: "Bloom Library", tags: ["Workplace", "Boundaries"], description: "How to effectively set boundaries.", url: "https://example.com/v3" },
+            { title: "Building Confidence Before Returning", type: "article", readTime: "5 min read", source: "The Maternity Coach", tags: ["Confidence", "Returning"], description: "A guide to building confidence.", url: "https://thematernitycoach.com/lost-confidence-after-maternity-leave/" },
+
+            { title: "Navigating Workplace Dynamics", type: "video", readTime: "12 min watch", source: "HBR", tags: ["Workplace", "Mindset"], description: "Tips and tricks for handling dynamics.", url: "https://hbr.org/2022/04/how-understanding-your-family-dynamics-can-improve-work" },
+
+            { title: "The First Week Back", type: "guide", readTime: "10 min read", source: "Nuffield Health", tags: ["Returning", "First Week"], description: "Essential survival guide.", url: "https://www.nuffieldhealth.com/article/returning-to-work-after-maternity-leave" },
+
+            { title: "Parenting and Career Growth", type: "podcast", readTime: "30 min listen", source: "Parents At Work", tags: ["Career", "Parenting"], description: "Podcast episode on balancing.", url: "https://podcasts.apple.com/us/podcast/parents-at-work/id1239258343" },
+
+            { title: "Imposter Syndrome as a Working Mom", type: "article", readTime: "7 min read", source: "The Mom Project", tags: ["Mindset", "Confidence"], description: "Overcoming the feeling of not belonging.", url: "https://community.themomproject.com/the-study/combating-imposter-syndrome" },
+
+            { title: "Flexible Working Negotiations", type: "video", readTime: "15 min watch", source: "TED", tags: ["Flexibility", "Career"], description: "How to negotiate flexible hours.", url: "https://www.ted.com/talks/ashley_pare_how_to_have_your_cake_negotiate_too" },
+
+            { title: "Reconnecting with Your Professional Self", type: "guide", readTime: "8 min read", source: "Restore Counseling", tags: ["Mindset", "Returning"], description: "Exercises to reconnect.", url: "https://www.restorecounselingtherapy.com/returning-to-work-after-maternity-leave/" },
+
+            { title: "Leadership After Leave", type: "podcast", readTime: "45 min listen", source: "Big Careers Small Children", tags: ["Leadership", "Career"], description: "Inspiring stories.", url: "https://www.leadersplus.org/podcast/" },
+
+            { title: "Time Management Hacks", type: "article", readTime: "6 min read", source: "Forbes", tags: ["Productivity", "Mindset"], description: "Actionable tips.", url: "https://www.forbes.com/sites/jodiecook/2024/09/18/time-management-hacks-from-the-worlds-most-successful-leaders" },
+
+            { title: "Setting Boundaries at Work", type: "video", readTime: "10 min watch", source: "TEDx / Built In", tags: ["Workplace", "Boundaries"], description: "How to effectively set boundaries.", url: "https://builtin.com/articles/setting-boundaries-at-work" },
         ];
 
         await Resource.insertMany(resources);
