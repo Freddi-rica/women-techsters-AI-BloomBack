@@ -4,10 +4,12 @@ const Resource = require('../resources/Resource.model');
 const Goal = require('../goals/Goal.model');
 const Milestone = require('../calendar/Milestone.model');
 const SuccessStory = require('../stories/SuccessStory.model');
+const User = require('../users/user_model');
 
 exports.getDashboard = async (req, res, next) => {
     try {
-        const userId = req.user._id;
+        const userId = req.user.id || req.user._id;
+        const userDoc = await User.findById(userId);
 
         const latestCheckIn = await CheckIn.findOne({ userId }).sort({ weekNumber: -1 });
 
@@ -37,8 +39,8 @@ exports.getDashboard = async (req, res, next) => {
 
         const dashboardData = {
             user: {
-                name: req.user.name || req.user.firstName || req.user.username || 'User',
-                journeyStage: latestCheckIn ? latestCheckIn.journeyStage : 'preparing',
+                name: userDoc ? (userDoc.fullName ? userDoc.fullName.split(' ')[0] : 'User') : 'User',
+                journeyStage: userDoc ? userDoc.journeyStage : 'preparing',
                 weekNumber: latestCheckIn ? latestCheckIn.weekNumber : 1
             },
             checkIn: {

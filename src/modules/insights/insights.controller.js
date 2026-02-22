@@ -4,7 +4,7 @@ const { generateKeyInsights } = require('./progressCalculation.service');
 // GET /insights/snapshot
 exports.getSnapshot = async (req, res, next) => {
     try {
-        const snapshot = await ProgressSnapshot.findOne({ userId: req.user._id });
+        const snapshot = await ProgressSnapshot.findOne({ userId: req.user.id || req.user._id });
         if (!snapshot) return res.status(404).json({ success: false, message: 'Snapshot not found' });
 
         res.json({
@@ -23,7 +23,7 @@ exports.getSnapshot = async (req, res, next) => {
 // GET /insights/trends
 exports.getTrends = async (req, res, next) => {
     try {
-        const snapshot = await ProgressSnapshot.findOne({ userId: req.user._id });
+        const snapshot = await ProgressSnapshot.findOne({ userId: req.user.id || req.user._id });
         if (!snapshot) return res.status(404).json({ success: false, message: 'Snapshot not found' });
 
         const weeks = snapshot.weeklyScores.map(ws => ({
@@ -42,7 +42,7 @@ exports.getTrends = async (req, res, next) => {
 // GET /insights/key-insights
 exports.getKeyInsights = async (req, res, next) => {
     try {
-        const snapshot = await ProgressSnapshot.findOne({ userId: req.user._id });
+        const snapshot = await ProgressSnapshot.findOne({ userId: req.user.id || req.user._id });
         const insights = generateKeyInsights(snapshot);
         res.json({ success: true, data: insights });
     } catch (err) {
