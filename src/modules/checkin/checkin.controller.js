@@ -7,7 +7,7 @@ const { generateGoalSuggestions } = require('../goals/goalSuggestion.service');
 exports.submitCheckIn = async (req, res, next) => {
     try {
         const { weekNumber, journeyStage, responses } = req.body;
-        const userId = req.user._id;
+        const userId = req.user.id || req.user._id;
 
         const existing = await CheckIn.findOne({ userId, weekNumber });
         if (existing) {
@@ -49,7 +49,7 @@ exports.submitCheckIn = async (req, res, next) => {
 // GET /checkin/history
 exports.getHistory = async (req, res, next) => {
     try {
-        const checkIns = await CheckIn.find({ userId: req.user._id }).sort({ weekNumber: 1 });
+        const checkIns = await CheckIn.find({ userId: req.user.id || req.user._id }).sort({ weekNumber: 1 });
         res.json({ success: true, data: checkIns });
     } catch (err) {
         next(err);
@@ -59,7 +59,7 @@ exports.getHistory = async (req, res, next) => {
 // GET /checkin/latest
 exports.getLatest = async (req, res, next) => {
     try {
-        const checkIn = await CheckIn.findOne({ userId: req.user._id }).sort({ weekNumber: -1 });
+        const checkIn = await CheckIn.findOne({ userId: req.user.id || req.user._id }).sort({ weekNumber: -1 });
         if (!checkIn) {
             return res.status(404).json({ success: false, message: 'No check-in found' });
         }
@@ -72,7 +72,7 @@ exports.getLatest = async (req, res, next) => {
 // GET /checkin/:id
 exports.getCheckIn = async (req, res, next) => {
     try {
-        const checkIn = await CheckIn.findOne({ _id: req.params.id, userId: req.user._id });
+        const checkIn = await CheckIn.findOne({ _id: req.params.id, userId: req.user.id || req.user._id });
         if (!checkIn) {
             return res.status(404).json({ success: false, message: 'Check-in not found' });
         }
