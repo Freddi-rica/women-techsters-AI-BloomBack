@@ -42,7 +42,7 @@ const seed = async () => {
         let user = await User.findOne();
         if (!user) {
             console.log('No user found, creating dummy...');
-            user = new User({ email: 'dummy@test.com', password: 'password123', name: 'Seed Dummy' });
+            user = new User({ email: 'dummy@test.com', passwordHash: 'password123', fullName: 'Seed Dummy' });
             await user.save();
         }
 
